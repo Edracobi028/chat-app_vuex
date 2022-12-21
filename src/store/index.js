@@ -19,7 +19,13 @@ const store = createStore({
 
         //tambien es posible pasarle y recibir argumentos por medio de una funcion arrow  nombrado por una c
         firstName: (state) => (c) => {
-            return state.username.split('').reverse().join(c) //unirlos por el caracter que recibamos
+            return state.username.split('').join(c) //unirlos por el caracter que recibamos
+        }
+    },
+    mutations: {
+        updateUsername(state, username){
+            //hacemos uso del state para actualizar el nombre de usuario con el nuevo nombre de usuario
+            state.username = username
         }
     }
 })
