@@ -24,7 +24,7 @@ export default {
     
   },
   methods: {
-    ...mapActions(['updateUsername'])
+    ...mapActions('profile', ['updateUsername'])
   }
 }
 </script>
