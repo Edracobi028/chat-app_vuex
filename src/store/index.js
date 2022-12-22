@@ -1,5 +1,7 @@
 //funcion para crear un sistema de almacenaje de datos
 import { createStore } from 'vuex'
+import { COMMIT_UPDATE_USERNAME } from '@/common/mutation-types.js'
+import { getUser } from '@/api'
 
 //Opciones de configuración del sistema de datos 
 //aqui definimos el modelo de datos que se usará en al app a nivel global
@@ -18,16 +20,19 @@ const store = createStore({
         }
     },
     mutations: {
-        updateUsername(state, username){
+        [COMMIT_UPDATE_USERNAME](state, username){
             //hacemos uso del state para actualizar el nombre de usuario con el nuevo nombre de usuario
             state.username = username
         }
     },
     //actions para actualizar nombre de usuario, las action se invocan con dispatch
     actions: {
-        updateUsername( { commit, state }, username ){
+        async updateUsername( { commit, state }, username ){
             console.log('update username action!', state.username, username)
-            commit('updateUsername', username)
+            //Antes del commit hacer la peticion al backend
+            const user = await getUser(1)
+            console.log(user)
+            commit( COMMIT_UPDATE_USERNAME , user.username)
         }
     }
 })
