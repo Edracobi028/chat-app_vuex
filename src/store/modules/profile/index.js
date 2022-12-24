@@ -1,4 +1,4 @@
-import { COMMIT_UPDATE_USERNAME } from '@/common/mutation-types.js'
+import { COMMIT_UPDATE_USERNAME, COMMIT_SET_STATUS } from '@/common/mutation-types.js'
 import { getUser } from '@/api'
 
 const module = {
@@ -6,7 +6,7 @@ const module = {
     namespaced: true,
     state(){
         return {
-            username : 'Edracobi.028',
+            username : '',
         }
     },
     //objeto que contiene todas las funciones que seran nuestros getters que permiten manipular los datos sin modificar la forma en que estan almacenados y disponibles
@@ -22,12 +22,21 @@ const module = {
             state.username = username
         }
     },
-    //actions para actualizar nombre de usuario, las action se invocan con dispatch
+    //API actions para actualizar nombre de usuario, las action se invocan con dispatch
+    //Agregamos rootstate para saber si esta activo o no
     actions: {
-        async updateUsername( { commit, state }, username ){
+        async updateUsername( { commit, state, rootState }, username ){
             console.log('update username action!', state.username, username)
             const user = await getUser(1)
             console.log(user)
+            console.log('status', rootState.status)
+            //cambiar a activo si el username no esta nulo, utilizando una "mutation" cambiar el status con ayuda de commit 
+
+            if(state.username){
+                //(mutation, valor, envio a padre)
+                //La convertimos en una variable
+                commit(COMMIT_SET_STATUS, 'active', { root:true} )
+            }
             commit( COMMIT_UPDATE_USERNAME , user.username)
         }
     },
