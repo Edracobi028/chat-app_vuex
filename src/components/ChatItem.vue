@@ -1,15 +1,15 @@
+<!-- Lista de los diferentes canales de conversacion -->
 <script setup>
 import { RouterLink } from 'vue-router'
 defineProps(['id', 'name', 'messages'])
 </script>
-
 <template>
   <RouterLink 
     :to="`${id}`"
     class="chat-item"
   >
-    <h5>{{ name }}</h5>
-    <div class="badge" v-if="messages">{{ messages }}</div>
+    <h5>{{ name }}</h5><!-- Nombre del canal -->
+    <div class="badge" v-if="messages">{{ messages }}</div><!-- mensajes sin leer de ese canal -->
   </RouterLink>
 </template>
 

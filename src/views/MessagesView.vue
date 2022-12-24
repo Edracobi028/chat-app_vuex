@@ -8,6 +8,7 @@ export default {
   data() {
     return {
       title: 'Nombre del canal',
+      /* Lista de contactos */
       people: [
         { id: 1, name: 'Tú', avatar: '/avatars/avatar.jpg' },
         { id: 2, name: 'Jason', avatar: '/avatars/avatar-02.jpg' },
@@ -29,21 +30,24 @@ export default {
     }
   },
   computed: {
+    /* Iterar la lista de mensajes y donde coincide con autor reemplaza el id por el objeto que representa al autor  */
     messagesView() {
       return this.messages.map((message) => {
         const author = this.people.find((p) => p.id === message.author)
-        if (!author) return message;
+        if (!author) return message; /* Si no loe ncuentra returna lo que ya tenia */
         return {
           ...message,
           author,
-          self: author.id === 1
+          self: author.id === 1 /* Cuand es tuyo lo coloca a la derecha */
         }
       })
     }
   },
   watch: {
+    /* Cambio de ruta o cuando se ingreso al chat */
     '$route.params.id': {
       immediate: true,
+      /* Scroll al final de los mensajes */
       handler() {
         this.scrollToBottom()
       }

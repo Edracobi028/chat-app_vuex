@@ -2,7 +2,7 @@
 defineProps(['modelValue'])
 defineEmits(['update:modelValue'])
 </script>
-
+<!-- input con v-model para leer una variable de texto -->
 <template>
   <div class="input-search">
     <input

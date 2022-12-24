@@ -1,7 +1,7 @@
 <script setup>
 defineProps(['avatar', 'author', 'time', 'message', 'is-self'])
 </script>
-
+<!-- El mensaje enviado con avatar -->
 <template>
   <div class="message-item" :class="{ self: isSelf }">
     <div class="author">
@@ -9,8 +9,8 @@ defineProps(['avatar', 'author', 'time', 'message', 'is-self'])
     </div>
     <div class="content">
       <div class="details" :class="{ self: isSelf }">
-        <h5>{{ author }}</h5>
-        <p>{{ time }}</p>
+        <h5>{{ author }}</h5><!-- Nombre del autor -->
+        <p>{{ time }}</p><!-- La hora del mensaje -->
       </div>
       <p class="message" :class="{ self: isSelf }">{{ message }}</p>
     </div>

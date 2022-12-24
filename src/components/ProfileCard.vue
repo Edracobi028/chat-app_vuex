@@ -1,3 +1,4 @@
+<!-- Muestra los datos de perfil de una persona -->
 <script setup>
 import { toRefs, computed } from 'vue'
 

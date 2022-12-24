@@ -29,15 +29,15 @@ const module = {
             console.log('update username action!', state.username, username)
             const user = await getUser(1)
             console.log(user)
-            console.log('status', rootState.status)
             //cambiar a activo si el username no esta nulo, utilizando una "mutation" cambiar el status con ayuda de commit 
-
+            
+            commit( COMMIT_UPDATE_USERNAME , user.username)
             if(state.username){
                 //(mutation, valor, envio a padre)
                 //La convertimos en una variable
                 commit(COMMIT_SET_STATUS, 'active', { root:true} )
+                console.log('status', rootState.status)
             }
-            commit( COMMIT_UPDATE_USERNAME , user.username)
         }
     },
 }
