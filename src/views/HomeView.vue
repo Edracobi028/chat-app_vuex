@@ -1,3 +1,30 @@
+<!-- Parte central del chat -->
+<template>
+  <div class="home">
+    <aside>
+      <InputSearch v-model="search" />
+      <ProfileCard
+        :avatar="profile.avatar"
+        :username="firstName('')"
+        :status="status"
+      />
+      <RouterLink to="/" class="channels-title">Canales <Icon icon="carbon:hashtag" /></RouterLink>
+      <div class="channels">
+        <ChatItem
+          v-for="channel in getChannels(search)"
+          :key="channel.id"
+          :id="channel.id"
+          :name="channel.name"
+          :messages="channel.messages.length"
+        />
+      </div>
+    </aside>
+    <main>
+      <RouterView />
+    </main>
+  </div>
+</template>
+
 <script>
   import { RouterView, RouterLink } from 'vue-router'
   import InputSearch from '@/components/InputSearch.vue'
@@ -34,37 +61,12 @@
     //mapSate que funciona que recibe variables que seran computadas
     computed: {
       ...mapState(['status']),
-      ...mapGetters('profile', ['firstName'])
+      ...mapGetters('profile', ['firstName']),
+      ...mapGetters('channels', ['getChannels'])
     }
 
   }
 </script>
-<!-- Parte central del chat -->
-<template>
-  <div class="home">
-    <aside>
-      <InputSearch v-model="search" />
-      <ProfileCard
-        :avatar="profile.avatar"
-        :username="firstName('')"
-        :status="status"
-      />
-      <RouterLink to="/" class="channels-title">Canales <Icon icon="carbon:hashtag" /></RouterLink>
-      <div class="channels">
-        <ChatItem
-          v-for="channel in channels"
-          :key="channel.id"
-          :id="channel.id"
-          :name="channel.name"
-          :messages="channel.messages"
-        />
-      </div>
-    </aside>
-    <main>
-      <RouterView />
-    </main>
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .home {
