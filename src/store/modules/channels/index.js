@@ -1,4 +1,4 @@
-//Dentro configuramos toda la info necesaria
+//Modulo Vuex de canales para configuarr el modelo toda la info necesaria
 const module = {
     //true para hacer referencia por su nombre
     namespaced: true,
