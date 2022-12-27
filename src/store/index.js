@@ -24,7 +24,7 @@ const store = createStore({
     modules: {
         profile,
         channels,
-        messages
+        messages,
     }
 })
 

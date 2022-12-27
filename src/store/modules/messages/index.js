@@ -1,22 +1,29 @@
-/* Modulo vuex */
-
-import getters from './getters' //Importar el json que define el getter
+import getters from "./getters"
 
 const module = {
     namespaced: true,
-    state(){
-        return{
+    state() {
+        return {
             messages: [
                 {   id: 1, 
                     author: 1, 
                     message: 'Hola 👀', 
-                    timestamp: new Date().toLocaleTimeString(), /* nos da la hora local cada vez que se generé el dato  */
-                    read: false/* boolean para discriminar mensajes vistos */
+                    timestamp: new Date().toLocaleTimeString(), 
+                    read: false,
+                    channelId: 1
                 },
+                {   id: 2, 
+                    author: 2, 
+                    message: 'Canal 2', 
+                    timestamp: new Date().toLocaleTimeString(), 
+                    read: false,
+                    channelId: 2
+                },
+                    
             ]
         }
     },
-    getters //importados desde el getters.js
+    getters
 }
 
 export default module

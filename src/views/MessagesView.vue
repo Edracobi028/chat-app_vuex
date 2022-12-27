@@ -1,3 +1,5 @@
+
+
 <template>
   <div class="messages">
     <header>
@@ -43,6 +45,7 @@
     },
     data() {
       return {
+        channelId: null,  
         title: 'Nombre del canal',
         /* Lista de contactos */
         people: [
@@ -50,29 +53,13 @@
           { id: 2, name: 'Jason', avatar: '/avatars/avatar-02.jpg' },
           { id: 3, name: 'Janet', avatar: '/avatars/avatar-03.jpg' }
         ],
-        messages: [
-          { id: 1, author: 1, message: 'Hola 👀', timestamp: new Date().toLocaleTimeString() },
-          { id: 2, author: 2, message: 'Holaaa!!!', timestamp: new Date().toLocaleTimeString() },
-          { id: 3, author: 3, message: 'Hola a todo el mundo 😊', timestamp: new Date().toLocaleTimeString() },
-          { id: 4, author: 3, message: '¿Cómo están?', timestamp: new Date().toLocaleTimeString() },
-          { id: 5, author: 1, message: 'Todo muy bien :D', timestamp: new Date().toLocaleTimeString() },
-          { id: 6, author: 2, message: 'Si, todo bien.', timestamp: new Date().toLocaleTimeString() },
-          { id: 7, author: 1, message: 'Oigan, les escribo para contarles algo... 😌', timestamp: new Date().toLocaleTimeString() },
-          { id: 8, author: 3, message: 'A vers 👀', timestamp: new Date().toLocaleTimeString() },
-          { id: 9, author: 2, message: 'Ahhhh!!', timestamp: new Date().toLocaleTimeString() },
-          { id: 10, author: 2, message: '¡Cuenta ese chismesito yaaaa!', timestamp: new Date().toLocaleTimeString() },
-          { id: 11, author: 1, message: 'Pues, ¡acabamos de lanzar los nuevos cursos de Vue.js!', timestamp: new Date().toLocaleTimeString() },        
-        ]
       }
     },
     computed: {
-      //computada para consumir el getter para traer mensajes a utilizar
-      ...mapGetters('messages', ['getMessages']),
-
       /* Iterar la lista de mensajes y donde coincide con autor reemplaza el id por el objeto que representa al autor  */
+      ...mapGetters('messages', ['getMessages']),
       messagesView() {
-        // ? para que el map sea opcional en caso que la lista tenga un problema
-        return this.getMessages?.map((message) => {
+        return this.getMessages(this.channelId)?.map((message) => {
           const author = this.people.find((p) => p.id === message.author)
           if (!author) return message; /* Si no loe ncuentra returna lo que ya tenia */
           return {
@@ -88,7 +75,8 @@
       '$route.params.id': {
         immediate: true,
         /* Scroll al final de los mensajes */
-        handler() {
+        handler(id) {
+          this.channelId = id //Reasignar cuando haya un cambio de ruta
           this.scrollToBottom()
         }
       }
