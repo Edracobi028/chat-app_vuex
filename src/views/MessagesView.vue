@@ -58,9 +58,10 @@
     computed: {
       /* Iterar la lista de mensajes y donde coincide con autor reemplaza el id por el objeto que representa al autor  */
       ...mapGetters('messages', ['getMessages']),
+      ...mapGetters('contacts', ['getContactById']),
       messagesView() {
         return this.getMessages(this.channelId)?.map((message) => {
-          const author = this.people.find((p) => p.id === message.author)
+          const author = this.getContactById(message.author)
           if (!author) return message; /* Si no loe ncuentra returna lo que ya tenia */
           return {
             ...message,

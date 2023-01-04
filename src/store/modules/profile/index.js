@@ -6,7 +6,13 @@ const module = {
     namespaced: true,
     state(){
         return {
+            id: 1,
             username : '',
+            details: {
+                id: 1,
+                name: 'Edracobi028',
+                avatar: '/avatars/avatar.jpg'
+            }
         }
     },
     //objeto que contiene todas las funciones que seran nuestros getters que permiten manipular los datos sin modificar la forma en que estan almacenados y disponibles
