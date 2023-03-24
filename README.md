@@ -1,13 +1,17 @@
+# chat-app
+Plantilla de chat con Vue 3 y Vite.
+
+Login
 ![image](https://user-images.githubusercontent.com/62727846/227444127-e0cd8ea7-79e5-4cd6-bbbe-c91ac89caaa3.png)
 
-![image](https://user-images.githubusercontent.com/62727846/227444012-829db83d-adfc-4363-b270-728afb54db20.png)
+Buscador
+![image](https://user-images.githubusercontent.com/62727846/227444281-2e7ef504-6878-4039-bfac-1461a1afb6e9.png)
 
+Canales de chats
 ![image](https://user-images.githubusercontent.com/62727846/227444169-cf5f447f-3424-441e-b359-903abc5e9791.png)
 
 
-# chat-app
 
-Plantilla de chat con Vue 3 y Vite.
 
 ## Recommended IDE Setup
 
