@@ -1,6 +1,10 @@
+
+![image](https://user-images.githubusercontent.com/62727846/227443494-f6f35610-5cce-4f1b-a53f-b10a6f7e5efc.png)
+
+
 # chat-app
 
-This template should help get you started developing with Vue 3 in Vite.
+Plantilla de chat con Vue 3 y Vite.
 
 ## Recommended IDE Setup
 
